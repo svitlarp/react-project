@@ -8,15 +8,18 @@
 // };
 
 
-export default function Product(props) {
-
-    const price = 999;
-
+export default function Product({
+    name,
+    imgUrl = 'https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder',
+    price,
+}) {
     return (
         <div>
-            <h2>{props.name}</h2>
-            <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640" alt={props.name} width="640" />
-            <p>Price: {props.price} credits</p>
+            <h2>{name}</h2>
+            <img src={imgUrl} alt={name} width="640" />
+
+            {price < 20 ? <p>Chipest food</p> : <p>{price}</p>}
+            {/* <p>Price: {price} credits</p> */}
         </div>
     );
 };
