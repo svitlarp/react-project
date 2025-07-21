@@ -1,0 +1,25 @@
+.alertStyles {
+    margin: 8px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    background-color: gray;
+    color: white;
+}
+
+
+/* Variant styles */
+.alert-info {
+    color: blue;
+}
+
+.alert-error {
+    color: red;
+}
+
+.alert-success {
+    color: green;
+}
+
+.alert-warning {
+    color: orange;
+}

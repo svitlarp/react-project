@@ -2,31 +2,18 @@
 import Product from './components/Product';
 import { favBooks } from './components/Books';
 import BookList from './components/Books';
-
-// React component names must always start with a capital letter, while HTML tags must be lowercase.
-function MyButton() {
-  return (
-    <button>Click Me Button</button>
-  )
-}
+import MyButton from './components/MyButton';
+import { DayQuote } from './components/DayQuote';
+import { Alert } from './components/Alert';
 
 
-// const DayQuote = () => (
-//   <p>"Do sport every day"</p>
-// )
-
-const DayQuote = () => {
-  return (
-    <p>"Do sport every day"</p>
-  );
-}
 
 function App() {
 
   return (
     <>
-      <MyButton />
-      <DayQuote />
+      <MyButton/>
+      <DayQuote></DayQuote>
       <p style={{
         color: "orange",
         fontSize: 24,
@@ -51,9 +38,14 @@ function App() {
         <h5>Books of the week</h5>
         <BookList books={favBooks} />
       </div>
+      <div id="alert-block">
+        <Alert variant="info">Would you like to browse our recommended products?</Alert>
+        <Alert variant="error">There was an error during transaction!</Alert>
+        <Alert variant="success">Payment received, thank you for your purchase!</Alert>
+        <Alert variant="warning">Please update your profile contact information</Alert>
+      </div>
     </>
   )
 }
 
 export default App
-

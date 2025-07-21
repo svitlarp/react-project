@@ -1,5 +1,6 @@
 // JSX is stricter than HTML. 
 // The EXPORT DEFAULT keywords specify the main component in the file
+import PropTypes from 'prop-types';
 
 export default function Product({
     name,
@@ -17,6 +18,12 @@ export default function Product({
     )
 } 
 
+
+Product.propTypes = {
+    name: PropTypes.string,
+    imgUrl: PropTypes.string,
+    price: PropTypes.number.isRequired,
+}
 
 // {price > 100 ? (<p>Price is more then usual</p>) : (<p>Price is: {price}</p>)}
 // {price > 100 && (
