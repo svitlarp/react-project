@@ -1,21 +1,5 @@
-import '../css/Alert.css'
-
-
-// const getBackgroundColor = (variant) => {
-//     switch (variant) {
-//         case "info":
-//             return "bleu";
-//         case "error":
-//             return "red";
-//         case "success":
-//             return "green";
-//         case "warning":
-//             return "orange";
-//         default:
-//             throw new Error(`Unsupported variant prop value - ${variant}`
-//         );
-//     }
-// }
+import '../css/Alert.css';
+import clsx from "clsx";
 
 
 export const Alert = ({ variant, outlined, elevated, children }) => {

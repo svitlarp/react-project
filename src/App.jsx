@@ -40,8 +40,8 @@ function App() {
       </div>
       <div id="alert-block">
         <Alert variant="info">Would you like to browse our recommended products?</Alert>
-        <Alert variant="error">There was an error during transaction!</Alert>
-        <Alert variant="success">Payment received, thank you for your purchase!</Alert>
+        <Alert variant="error" outlined>There was an error during transaction!</Alert>
+        <Alert variant="success" elevated>Payment received, thank you for your purchase!</Alert>
         <Alert variant="warning">Please update your profile contact information</Alert>
       </div>
     </>
