@@ -1,51 +1,53 @@
-// import './App.css'
-import Product from './components/Product';
-import { favBooks } from './components/Books';
-import BookList from './components/Books';
-import MyButton from './components/MyButton';
-import { DayQuote } from './components/DayQuote';
-import { Alert } from './components/Alert';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import LoaderHourglass from "./components/Loader";
 
 
 
-function App() {
 
-  return (
-    <>
-      <MyButton/>
-      <DayQuote></DayQuote>
-      <p style={{
-        color: "orange",
-        fontSize: 24,
-        padding: "12px",
-        backgroundColor: "black",
-      }}
-      >Hello from React app!</p>
-      <Product
-        name="Tacos1"
-        imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640"
-        price={999}/>
-      <Product
-        name="Tacos2 With Lime"
-        imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?dpr=2&h=480&w=640"
-        price={10.99}
-      />
-      <Product
-      name="Tacos3"
-        price={44.15} />
-      
-      <div id="books">
-        <h5>Books of the week</h5>
-        <BookList books={favBooks} />
-      </div>
-      <div id="alert-block">
-        <Alert variant="info">Would you like to browse our recommended products?</Alert>
-        <Alert variant="error" outlined>There was an error during transaction!</Alert>
-        <Alert variant="success" elevated>Payment received, thank you for your purchase!</Alert>
-        <Alert variant="warning">Please update your profile contact information</Alert>
-      </div>
-    </>
-  )
+function ArticleList({items}) {
+    return (
+        <ul className="articleList">
+            {items.map(({ objectID, title, url }) => (
+                <li key={objectID}>
+                    <a href={url} target="_blanc" rel="noreferrer nooopener">
+                        {title}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    );
 }
 
-export default App
+//Зверніть увагу, що умовний рендерінг відбувається в батьківському компоненті App. 
+export default function App() {
+    const [articles, setArticles] = useState([]);
+    const [loading, setloading] = useState(false);
+
+    useEffect(() => {
+        async function fetchArticles() {
+            try {
+                setloading(true);
+                const response = await axios.get('https://hn.algolia.com/api/v1/search?query=react');
+                console.log(response.data.hits);
+                setArticles(response.data.hits);
+            }
+            catch (err) {
+                console.log(err);
+            }
+            finally {
+                setloading(false);
+            }
+        }
+        fetchArticles();
+    }, []);
+
+    return (
+        <div>
+            <h1>Latest News</h1>
+            {loading && <LoaderHourglass />}
+            {articles.length > 0 && <ArticleList items={articles} />}  
+        </div>
+    );    
+}
+

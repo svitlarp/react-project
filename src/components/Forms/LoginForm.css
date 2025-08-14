@@ -1,0 +1,18 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    gap: 8px;
+}
+
+/* За замовчуванням поле введення є рядковим елементом, який не успадковує сімейство шрифтів */
+input {
+    font-family: inherit;
+    padding: 4px;
+}
+
+button {
+    font-family: inherit;
+    color: currentColor;
+}
