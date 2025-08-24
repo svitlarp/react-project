@@ -8,6 +8,7 @@ import LightSwitch from "./components/LightSwitch.jsx";
 import ColorSwitch from "./components/ColorSwitch.jsx";
 import RadioButton from "./components/RadioButton.jsx";
 import CheckBox from "./components/CheckBox.jsx";
+import { LoginForm } from "./components/loginForm/LoginForm.jsx";
 
 
 function ArticleList({items}) {
@@ -101,6 +102,8 @@ export default function App() {
             
             <RadioButton size={coffeeSize} onSizeChange={handleSizeChange} />
             <CheckBox checkboxTerms={hasAccepted} onChangeTerms={handleChangeCheckbox} />
+
+            <LoginForm />
 
             <h1>Latest News</h1>
             {loading && <LoaderHourglass />}
